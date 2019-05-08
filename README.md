@@ -35,3 +35,20 @@ get-adgroup -Identity "CN=AB_Roles_Approvers,OU=Access,OU=PINGPONG Prod,OU=PINGP
 Get-ADGroup -Filter {name -like "SN_*"} -Properties Description,info | Select Name,samaccountname,Description,info | Sort Name
 
 ```
+
+### Powershell export-csv with no headers
+
+It sounds like you basically want just text a file list of the names:
+```
+Get-Mailbox -RecipientTypeDetails RoomMailbox,EquipmentMailbox |
+ Select-Object -ExpandProperty Name | 
+ Set-Content -Path "$(get-date -f MM-dd-yyyy)_Resources.txt"
+ ```
+Edit: if you really want an export-csv without a header row:
+```
+(Get-Mailbox -RecipientTypeDetails RoomMailbox,EquipmentMailbox |
+Select-Object Name |
+ConvertTo-Csv -NoTypeInformation) |
+Select-Object -Skip 1 |
+Set-Content -Path "$(get-date -f MM-dd-yyyy)_Resources.csv"
+```
