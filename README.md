@@ -1,6 +1,9 @@
 # my-activedirectory-kb
 Learn tips and tricks related to accessing and using active directory
 
+## Blogs/Articles
+1. [Powershell-arrays-Everything-you-wanted-to-know](https://powershellexplained.com/2018-10-15-Powershell-arrays-Everything-you-wanted-to-know/)
+
 
 ### Search Active Directory Groups with Wildcard
 To work around this problem, my recommendation is to use the PowerShell ActiveDirectory module. See the following for some hints on how to use:
